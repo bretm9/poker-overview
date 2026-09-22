@@ -42,10 +42,6 @@ React · TypeScript · Vite · Tailwind CSS · Vercel
 
 Built October 2025 (~950 lines). Live.
 
-## Development
-
-I built the game using Claude Code for coding assistance.
-
 ---
 
 *Bret Merritt · [GitHub](https://github.com/bretm9) · [LinkedIn](https://www.linkedin.com/in/bret-merritt) · merrittbret9@gmail.com*
