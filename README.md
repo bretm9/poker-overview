@@ -1,10 +1,10 @@
-# Texas Hold'em — heads-up poker against five AI opponents
+# Texas Hold'em - poker against five computer opponents
 
-> A complete single-player Texas Hold'em game in the browser: shuffling, blinds, a rotating dealer button, all four betting rounds, best-5-of-7 hand evaluation, and a showdown — against five AI opponents who fold, call, and raise on hand strength. Mobile-first, with a felt table, dealing animations, chips that slide to the pot, and a raise slider with pot-fraction presets.
+> A browser-based Texas Hold'em game against five computer opponents. It handles the deal, blinds, all four betting rounds, hand evaluation, and showdown. The table works on phones and desktops, with card and chip animations and a slider for raising.
 
-🔗 **Play it:** https://poker-ebon-two.vercel.app
+**Play it:** https://poker-ebon-two.vercel.app
 
-This repo is an overview of a closed-source project (I built it because free, ad-less, no-login poker apps are surprisingly hard to find). The source is private — I'm happy to walk through it in an interview.
+I built this because I wanted a free poker app without ads or a login. This repository describes the game; the source code is private.
 
 <p align="center">
   <img src="screenshots/table-desktop.png" width="900" alt="Poker table">
@@ -22,11 +22,11 @@ This repo is an overview of a closed-source project (I built it because free, ad
 
 ## Features
 
-- **Full hand loop** — deck shuffle, small/big blinds, rotating dealer button, pre-flop / flop / turn / river betting rounds with correct action order, and a showdown with the winning hand named.
-- **Hand evaluator** — best five of seven cards across all ranks (high card through straight flush) with kicker tie-breaks.
+- **Hand sequence:** Deck shuffle, small and big blinds, a rotating dealer button, pre-flop, flop, turn, and river betting rounds, and a showdown that names the winning hand.
+- **Hand evaluator:** Finds the best five of seven cards, from high card through straight flush, with kicker tie-breaks.
 - **Five AI opponents** who decide fold / call / raise from hand strength and the current bet, with a little variance so they're not predictable.
-- **Betting UI** — check/call/fold buttons, a raise slider with pot-fraction presets, and an action log ("Emma folds", "David checks").
-- **Table presentation** — felt texture, card-dealing animations, animated chip-to-pot movement, avatar seats with stack sizes, and a layout that works portrait on a phone or wide on a desktop.
+- **Betting controls:** Check, call, and fold buttons, a raise slider with pot-fraction presets, and an action log ("Emma folds", "David checks").
+- **Table:** Felt texture, dealing animations, chips that move to the pot, player avatars, and visible stack sizes. The layout supports portrait phones and wider desktop screens.
 
 ## Technologies
 
@@ -34,17 +34,17 @@ React · TypeScript · Vite · Tailwind CSS · Vercel
 
 ## Engineering notes
 
-- The game state is a single reducer-style model (players, deck, community cards, phase, active player, bets) so every UI element derives from one source of truth and the AI turns can be scheduled deterministically.
-- Betting-round completion is tracked explicitly (who has acted since the last raise) — the part of Hold'em most homemade implementations get subtly wrong.
-- Animations are decoupled from game logic: bets animate to the pot after the state has already moved on, so the game never waits on a transition.
+- A reducer-style model holds the players, deck, community cards, phase, active player, and bets. The interface and computer turns use that state.
+- Betting rounds track who has acted since the last raise to determine when the round is complete.
+- Animations run separately from game logic. Chips move to the pot after the bet is recorded, so the next action can proceed during the animation.
 
 ## Status
 
 Built October 2025 (~950 lines). Live.
 
-## Process
+## Development
 
-Built solo with Claude Code as a pair-programmer.
+I built the game using Claude Code for coding assistance.
 
 ---
 
